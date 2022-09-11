@@ -49,6 +49,8 @@
 
 ### Example video
 
+![](https://github.com/podiyaaa/card-flip-game/blob/dev/example/example.mp4)
+
 <video width="240" height="320" controls>
   <source src="https://github.com/podiyaaa/card-flip-game/blob/dev/example/example.mp4" type="video/mp4">
 </video>
