@@ -47,7 +47,7 @@
   `npx react-native run-ios` - this will build application and run on ios simulator.  
   `npx react-native run-android` - this will build application and run on android emulator.
 
-### example video
+### Example video
 
-![](example/example.mp4)
+![](./example/example.mp4)
 
