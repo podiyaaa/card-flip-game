@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
+  Alert,
+  Button,
   LayoutChangeEvent,
   LayoutRectangle,
   SafeAreaView,
@@ -8,28 +10,43 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import CardView from './CardView';
-import {useGamePlayScreenViewModel} from './Hooks';
+import {CardView} from '../../components';
+import {useGamePlayScreenViewModel} from './view-model';
 
 type GamePlayScreenProps = {};
 
 const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
-  const {cards, refresh, handleSelection, stayFliped, dissable} =
-    useGamePlayScreenViewModel();
+  const {
+    cards,
+    refresh,
+    handleSelection,
+    stayFliped,
+    dissable,
+    turns,
+    isFinished,
+  } = useGamePlayScreenViewModel();
   const [baseContainerFrame, setBaseContainerFrame] = useState<LayoutRectangle>(
     {height: 0, width: 0, x: 0, y: 0},
   );
   const {height, width} = useWindowDimensions();
+
   useEffect(() => {
     refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (isFinished) {
+      Alert.alert('Congradulations!', `You win this game by ${turns} steps`, [
+        {text: 'Try another round', style: 'default', onPress: refresh},
+      ]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFinished]);
+
   const onLayoutContainer = (event: LayoutChangeEvent) => {
     setBaseContainerFrame(event.nativeEvent.layout);
   };
-
-  console.log(cards);
 
   if (height < width) {
     return (
@@ -41,6 +58,14 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <View style={styles.actionButtonsContainer}>
+        <View style={styles.resetButtonContainer}>
+          <Button title="Reset" onPress={refresh} />
+        </View>
+        <View style={styles.stepsButtonContainer}>
+          <Text>STEPS {turns}</Text>
+        </View>
+      </View>
       <View style={styles.baseContainer} onLayout={onLayoutContainer}>
         {cards.map(card => {
           return (
@@ -65,6 +90,13 @@ export default GamePlayScreen;
 const styles = StyleSheet.create({
   safeArea: {flex: 1},
   center: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  actionButtonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  resetButtonContainer: {marginLeft: 10},
+  stepsButtonContainer: {marginRight: 20},
   baseContainer: {
     flex: 1,
     flexWrap: 'wrap',

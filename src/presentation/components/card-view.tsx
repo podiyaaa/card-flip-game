@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react';
 import {Animated, Pressable, StyleSheet, Text, View} from 'react-native';
-import {Card} from './Models';
+import {Card} from '../../domain/models';
 
 type CardViewProps = {
   card: Card;
@@ -52,7 +52,6 @@ const CardView: React.FC<CardViewProps> = ({
   }, [fliped]);
 
   const onPressView = () => {
-    console.log(card);
     if (diabled || fliped) {
       return;
     }

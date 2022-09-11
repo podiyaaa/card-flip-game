@@ -1,5 +1,5 @@
 import React from 'react';
-import GamePlayScreen from './GamePlayScreen';
+import {GamePlayScreen} from './presentation/screens/game-play';
 
 const App = () => {
   return <GamePlayScreen />;

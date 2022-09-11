@@ -1,5 +1,5 @@
 import {describe, expect, test} from '@jest/globals';
-import {randomNumbers, shuffleArray} from '../Utils';
+import {randomNumbers, shuffleArray} from '../src/utils';
 describe('randomNumbers', () => {
   test('pass 6 as a method parameter => ', () => {
     expect(randomNumbers(6).length).toEqual(6);
