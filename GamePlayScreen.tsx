@@ -9,34 +9,17 @@ import {
   View,
 } from 'react-native';
 import CardView from './CardView';
-import {Card} from './Models';
-import {randomNumbers, shuffleArray} from './Utils';
+import {useGamePlayScreenViewModel} from './Hooks';
 
 type GamePlayScreenProps = {};
 
-function useGamePlayScreenViewModel() {
-  const sixNumbers = randomNumbers(6);
-  const [cards, setCards] = useState<Card[]>([]);
-  const refresh = () => {
-    var _cards = [...sixNumbers, ...sixNumbers].map((number, index) => {
-      return {id: `${index}`, number: number} as Card;
-    });
-    _cards = shuffleArray(_cards);
-    setCards(_cards);
-  };
-  return {
-    cards,
-    refresh,
-  };
-}
-
 const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
-  const {cards, refresh} = useGamePlayScreenViewModel();
+  const {cards, refresh, handleSelection, stayFliped, dissable} =
+    useGamePlayScreenViewModel();
   const [baseContainerFrame, setBaseContainerFrame] = useState<LayoutRectangle>(
     {height: 0, width: 0, x: 0, y: 0},
   );
   const {height, width} = useWindowDimensions();
-
   useEffect(() => {
     refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,10 +29,12 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
     setBaseContainerFrame(event.nativeEvent.layout);
   };
 
+  console.log(cards);
+
   if (height < width) {
     return (
       <View style={styles.center}>
-        <Text>Currently support for Portrait only</Text>
+        <Text>Currently not supporting landscape.</Text>
       </View>
     );
   }
@@ -64,6 +49,9 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
               card={card}
               height={baseContainerFrame.height / 4}
               width={baseContainerFrame.width / 3}
+              onPress={handleSelection}
+              fliped={stayFliped(card)}
+              diabled={dissable}
             />
           );
         })}

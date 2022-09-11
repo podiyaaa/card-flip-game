@@ -1,4 +1,4 @@
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {Animated, Pressable, StyleSheet, Text, View} from 'react-native';
 import {Card} from './Models';
 
@@ -6,14 +6,20 @@ type CardViewProps = {
   card: Card;
   height: number;
   width: number;
+  onPress: (card: Card) => void;
+  fliped: boolean;
+  diabled: boolean;
 };
 
-const CardView: React.FC<CardViewProps> = ({card, height, width}) => {
+const CardView: React.FC<CardViewProps> = ({
+  card,
+  height,
+  width,
+  onPress,
+  fliped,
+  diabled,
+}) => {
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
-  var value: number = 0;
-  animatedValue.addListener(obj => {
-    value = obj.value;
-  });
   const frontInterpolate: Animated.AnimatedInterpolation =
     animatedValue.interpolate({
       inputRange: [0, 180],
@@ -26,22 +32,31 @@ const CardView: React.FC<CardViewProps> = ({card, height, width}) => {
       outputRange: ['180deg', '360deg'],
     });
 
-  const onPress = () => {
-    if (value >= 90) {
-      Animated.spring(animatedValue, {
-        toValue: 0,
-        friction: 8,
-        tension: 10,
-        useNativeDriver: true,
-      }).start();
-    } else {
+  useEffect(() => {
+    if (fliped) {
       Animated.spring(animatedValue, {
         toValue: 180,
         friction: 8,
         tension: 10,
         useNativeDriver: true,
       }).start();
+    } else {
+      Animated.spring(animatedValue, {
+        toValue: 0,
+        friction: 8,
+        tension: 10,
+        useNativeDriver: true,
+      }).start();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fliped]);
+
+  const onPressView = () => {
+    console.log(card);
+    if (diabled || fliped) {
+      return;
+    }
+    onPress(card);
   };
 
   return (
@@ -55,7 +70,7 @@ const CardView: React.FC<CardViewProps> = ({card, height, width}) => {
         },
       ]}>
       {/*eslint-disable-next-line react/react-in-jsx-scope*/}
-      <Pressable onPress={onPress} style={styles.pressableContainer}>
+      <Pressable onPress={onPressView} style={styles.pressableContainer}>
         {/*eslint-disable-next-line react/react-in-jsx-scope*/}
         <Animated.View
           style={[styles.backCard, {transform: [{rotateY: backInterpolate}]}]}>
