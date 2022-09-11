@@ -20,8 +20,8 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
     cards,
     refresh,
     handleSelection,
-    stayFliped,
-    dissable,
+    stayFlipped,
+    disable,
     turns,
     isFinished,
   } = useGamePlayScreenViewModel();
@@ -32,16 +32,14 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
 
   useEffect(() => {
     refresh();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (isFinished) {
-      Alert.alert('Congradulations!', `You win this game by ${turns} steps`, [
+      Alert.alert('Congratulations!', `You win this game by ${turns} steps`, [
         {text: 'Try another round', style: 'default', onPress: refresh},
       ]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFinished]);
 
   const onLayoutContainer = (event: LayoutChangeEvent) => {
@@ -75,8 +73,8 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
               height={baseContainerFrame.height / 4}
               width={baseContainerFrame.width / 3}
               onPress={handleSelection}
-              fliped={stayFliped(card)}
-              diabled={dissable}
+              flipped={stayFlipped(card)}
+              disabled={disable}
             />
           );
         })}

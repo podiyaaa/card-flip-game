@@ -10,6 +10,8 @@ module.exports = {
         '@typescript-eslint/no-shadow': ['error'],
         'no-shadow': 'off',
         'no-undef': 'off',
+        'react-hooks/exhaustive-deps': 0,
+        'react/react-in-jsx-scope': 'off',
       },
     },
   ],

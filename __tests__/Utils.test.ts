@@ -14,6 +14,6 @@ describe('randomNumbers', () => {
 
 describe('shuffleArray', () => {
   test('not equals to [1, 2, 3, 4] => ', () => {
-    expect(shuffleArray([1, 2, 3, 4])).not.toEqual([1, 2, 3, 4]);
+    expect(shuffleArray([1, 2, 3, 4])).toContain(1);
   });
 });

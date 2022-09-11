@@ -7,8 +7,8 @@ type CardViewProps = {
   height: number;
   width: number;
   onPress: (card: Card) => void;
-  fliped: boolean;
-  diabled: boolean;
+  flipped: boolean;
+  disabled: boolean;
 };
 
 const CardView: React.FC<CardViewProps> = ({
@@ -16,8 +16,8 @@ const CardView: React.FC<CardViewProps> = ({
   height,
   width,
   onPress,
-  fliped,
-  diabled,
+  flipped,
+  disabled,
 }) => {
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
   const frontInterpolate: Animated.AnimatedInterpolation =
@@ -33,7 +33,7 @@ const CardView: React.FC<CardViewProps> = ({
     });
 
   useEffect(() => {
-    if (fliped) {
+    if (flipped) {
       Animated.spring(animatedValue, {
         toValue: 180,
         friction: 8,
@@ -48,18 +48,16 @@ const CardView: React.FC<CardViewProps> = ({
         useNativeDriver: true,
       }).start();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fliped]);
+  }, [flipped]);
 
   const onPressView = () => {
-    if (diabled || fliped) {
+    if (disabled || flipped) {
       return;
     }
     onPress(card);
   };
 
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <View
       style={[
         styles.baseContainer,
@@ -68,15 +66,11 @@ const CardView: React.FC<CardViewProps> = ({
           height: height,
         },
       ]}>
-      {/*eslint-disable-next-line react/react-in-jsx-scope*/}
       <Pressable onPress={onPressView} style={styles.pressableContainer}>
-        {/*eslint-disable-next-line react/react-in-jsx-scope*/}
         <Animated.View
           style={[styles.backCard, {transform: [{rotateY: backInterpolate}]}]}>
-          {/*eslint-disable-next-line react/react-in-jsx-scope*/}
           <Text>{card.number}</Text>
         </Animated.View>
-        {/*eslint-disable-next-line react/react-in-jsx-scope*/}
         <Animated.View
           style={[
             styles.frontCard,

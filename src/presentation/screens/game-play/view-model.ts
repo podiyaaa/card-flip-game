@@ -8,14 +8,14 @@ export function useGamePlayScreenViewModel() {
   const [turns, setTurns] = useState<number>(0);
   const [selectionOne, setSelectionOne] = useState<Card | null>(null);
   const [selectionTwo, setSelectionTwo] = useState<Card | null>(null);
-  const [dissable, setDissable] = useState<boolean>(false);
+  const [disable, setDisable] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
 
   const refresh = () => {
     setTurns(0);
     setSelectionOne(null);
     setSelectionTwo(null);
-    setDissable(false);
+    setDisable(false);
     setIsFinished(false);
     setTimeout(() => {
       var _cards = [...sixNumbers, ...sixNumbers].map((number, index) => {
@@ -23,7 +23,6 @@ export function useGamePlayScreenViewModel() {
           id: `${index}`,
           number: number,
           matched: false,
-          fliped: false,
         } as Card;
       });
       _cards = shuffleArray(_cards);
@@ -31,22 +30,22 @@ export function useGamePlayScreenViewModel() {
     }, 400);
   };
 
-  const increementTurns = () => {
+  const incrementTurns = () => {
     setTurns(preTurns => preTurns + 1);
   };
 
   const handleSelection = (card: Card) => {
-    increementTurns();
+    incrementTurns();
     selectionOne ? setSelectionTwo(card) : setSelectionOne(card);
   };
 
-  const stayFliped = (card: Card) => {
+  const stayFlipped = (card: Card) => {
     return card === selectionOne || card === selectionTwo || card.matched;
   };
 
   useEffect(() => {
     if (selectionOne && selectionTwo) {
-      setDissable(true);
+      setDisable(true);
       if (selectionOne.number === selectionTwo.number) {
         setCards(preCards => {
           const newCards = preCards.map(card => {
@@ -83,7 +82,7 @@ export function useGamePlayScreenViewModel() {
   const resetSelection = () => {
     setSelectionOne(null);
     setSelectionTwo(null);
-    setDissable(false);
+    setDisable(false);
   };
 
   return {
@@ -91,8 +90,10 @@ export function useGamePlayScreenViewModel() {
     refresh,
     turns,
     handleSelection,
-    stayFliped,
-    dissable,
+    stayFlipped,
+    disable,
     isFinished,
+    selectionOne,
+    selectionTwo,
   };
 }
