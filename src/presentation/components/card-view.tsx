@@ -87,9 +87,7 @@ const CardView: React.FC<CardViewProps> = ({
 export default CardView;
 
 const styles = StyleSheet.create({
-  baseContainer: {
-    backgroundColor: 'white',
-  },
+  baseContainer: {},
   pressableContainer: {
     width: '92%',
     height: '94%',
@@ -98,17 +96,21 @@ const styles = StyleSheet.create({
   backCard: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
     top: 0,
     backfaceVisibility: 'hidden',
+    borderRadius: 10,
   },
   frontCard: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'red',
+    backgroundColor: '#5594F8',
     backfaceVisibility: 'hidden',
+    borderRadius: 10,
+    borderColor: 'white',
+    borderWidth: 3,
   },
 });

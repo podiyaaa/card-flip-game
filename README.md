@@ -46,3 +46,7 @@
   `yarn start -- --reset-cache` - this will start the react packager/server.  
   `npx react-native run-ios` - this will build application and run on ios simulator.  
   `npx react-native run-android` - this will build application and run on android emulator.
+
+### Example video
+https://github.com/podiyaaa/card-flip-game/blob/dev/example/example.mp4
+
