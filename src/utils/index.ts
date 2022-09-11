@@ -1,3 +1,5 @@
+export const backgroundBlack = '#3D4144';
+
 export function randomNumbers(length: number): number[] {
   var numbers: number[] = [];
   var isRunning = true;

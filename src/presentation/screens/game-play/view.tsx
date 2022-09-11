@@ -10,6 +10,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import {backgroundBlack} from '../../../utils';
 import {CardView} from '../../components';
 import {useGamePlayScreenViewModel} from './view-model';
 
@@ -58,10 +59,12 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.actionButtonsContainer}>
         <View style={styles.resetButtonContainer}>
-          <Button title="Reset" onPress={refresh} />
+          <Button title="Restart" onPress={refresh} />
         </View>
-        <View style={styles.stepsButtonContainer}>
-          <Text>STEPS {turns}</Text>
+        <View style={styles.stepsLabelContainer}>
+          <Text style={styles.stepsLabel}>
+            STEPS: <Text style={styles.turnCountLabel}>{turns}</Text>
+          </Text>
         </View>
       </View>
       <View style={styles.baseContainer} onLayout={onLayoutContainer}>
@@ -86,7 +89,7 @@ const GamePlayScreen: React.FC<GamePlayScreenProps> = () => {
 export default GamePlayScreen;
 
 const styles = StyleSheet.create({
-  safeArea: {flex: 1},
+  safeArea: {flex: 1, backgroundColor: backgroundBlack},
   center: {flex: 1, justifyContent: 'center', alignItems: 'center'},
   actionButtonsContainer: {
     flexDirection: 'row',
@@ -94,7 +97,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   resetButtonContainer: {marginLeft: 10},
-  stepsButtonContainer: {marginRight: 20},
+  stepsLabelContainer: {marginRight: 20},
+  stepsLabel: {
+    fontSize: 25,
+    color: 'white',
+  },
+  turnCountLabel: {
+    color: '#5594F8',
+  },
   baseContainer: {
     flex: 1,
     flexWrap: 'wrap',
