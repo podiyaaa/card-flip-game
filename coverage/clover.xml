@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1662921237242" clover="3.2.0">
+  <project timestamp="1662921237242" name="All files">
+    <metrics statements="60" coveredstatements="58" conditionals="23" coveredconditionals="22" methods="19" coveredmethods="18" elements="102" coveredelements="98" complexity="0" loc="60" ncloc="60" packages="2" files="2" classes="2"/>
+    <package name="presentation.screens.game-play">
+      <metrics statements="48" coveredstatements="46" conditionals="17" coveredconditionals="16" methods="16" coveredmethods="15"/>
+      <file name="view-model.ts" path="/Users/ravindu/development/singtel/card-flip-game/src/presentation/screens/game-play/view-model.ts">
+        <metrics statements="48" coveredstatements="46" conditionals="17" coveredconditionals="16" methods="16" coveredmethods="15"/>
+        <line num="6" count="16" type="stmt"/>
+        <line num="7" count="16" type="stmt"/>
+        <line num="8" count="16" type="stmt"/>
+        <line num="9" count="16" type="stmt"/>
+        <line num="10" count="16" type="stmt"/>
+        <line num="11" count="16" type="stmt"/>
+        <line num="12" count="16" type="stmt"/>
+        <line num="14" count="16" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="48" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="33" count="16" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="37" count="16" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="39" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="16" type="stmt"/>
+        <line num="43" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="46" count="16" type="stmt"/>
+        <line num="47" count="11" type="cond" truecount="4" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="55" count="10" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="69" count="16" type="stmt"/>
+        <line num="70" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="48" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="82" count="16" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="88" count="16" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+      <file name="index.ts" path="/Users/ravindu/development/singtel/card-flip-game/src/utils/index.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="2" count="19" type="stmt"/>
+        <line num="3" count="19" type="stmt"/>
+        <line num="4" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="18" type="stmt"/>
+        <line num="8" count="110" type="stmt"/>
+        <line num="9" count="110" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="108" type="stmt"/>
+        <line num="12" count="110" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="18" type="stmt"/>
+        <line num="16" count="18" type="stmt"/>
+        <line num="20" count="117" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
